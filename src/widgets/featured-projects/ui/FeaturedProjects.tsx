@@ -20,7 +20,7 @@ function TechTag({ label }: { label: string }) {
 }
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
-  const t = useTranslations('projects')
+  const t = useTranslations()
 
   return (
     <div className="glass-card rounded-3xl p-8 h-full flex flex-col justify-between overflow-hidden relative hover:bg-surface/60 hover:border-primary/30 transition-all duration-300">
@@ -31,14 +31,14 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           ))}
         </div>
         <h3 className="text-3xl font-bold font-display mb-3 group-hover:text-neon-blue transition-colors">
-          {project.title}
+          {t(project.titleKey as any)}
         </h3>
         <p className="text-gray-400 max-w-md mb-8 leading-relaxed">
-          {project.description}
+          {t(project.descriptionKey as any)}
         </p>
         <div className="opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           <button className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 transition-all">
-            {t('cta.viewCase')}
+            {t('projects.cta.viewCase' as any)}
             <ExternalLink className="size-4" />
           </button>
         </div>
@@ -49,7 +49,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           style={{ perspective: '1000px' }}
         >
           <img
-            alt={project.title}
+            alt={t(project.titleKey as any)}
             src={project.image}
             className="w-full rounded-2xl shadow-2xl border border-white/10 transform rotate-x-[5deg] rotate-y-[-5deg] group-hover:rotate-x-0 group-hover:rotate-y-0 group-hover:scale-[1.02] transition-transform duration-500"
           />
@@ -60,6 +60,8 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 }
 
 function SmallProjectCard({ project }: { project: (typeof projects)[1] }) {
+  const t = useTranslations()
+
   return (
     <div className="glass-card rounded-3xl p-8 h-full flex flex-col overflow-hidden hover:bg-surface/60 hover:border-primary/30 transition-all duration-300">
       <div className="flex flex-wrap gap-2 mb-6">
@@ -68,14 +70,14 @@ function SmallProjectCard({ project }: { project: (typeof projects)[1] }) {
         ))}
       </div>
       <h3 className="text-2xl font-bold font-display mb-3 group-hover:text-neon-purple transition-colors">
-        {project.title}
+        {t(project.titleKey as any)}
       </h3>
       <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-        {project.description}
+        {t(project.descriptionKey as any)}
       </p>
       <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
         <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">
-          {project.category}
+          {project.categoryKey ? t(project.categoryKey as any) : ''}
         </span>
         <ArrowUpRight className="size-5 text-gray-500 group-hover:text-neon-purple transition-colors" />
       </div>
@@ -84,18 +86,22 @@ function SmallProjectCard({ project }: { project: (typeof projects)[1] }) {
 }
 
 function IconProjectCard({ project }: { project: (typeof projects)[2] }) {
+  const t = useTranslations()
+
   return (
     <div className="glass-card rounded-3xl p-8 h-full flex flex-col overflow-hidden bg-gradient-to-br from-surface to-surface hover:bg-surface/60 hover:border-primary/30 transition-all duration-300">
       <div className="size-14 rounded-2xl bg-neon-green/10 flex items-center justify-center text-neon-green mb-6 border border-neon-green/20">
         <Activity className="size-7" />
       </div>
-      <h3 className="text-2xl font-bold font-display mb-3">{project.title}</h3>
+      <h3 className="text-2xl font-bold font-display mb-3">
+        {t(project.titleKey as any)}
+      </h3>
       <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-        {project.description}
+        {t(project.descriptionKey as any)}
       </p>
       <div className="mt-auto">
         <span className="text-[10px] font-bold text-neon-green uppercase">
-          {project.stat}
+          {project.statKey ? t(project.statKey as any) : ''}
         </span>
       </div>
     </div>
@@ -103,7 +109,7 @@ function IconProjectCard({ project }: { project: (typeof projects)[2] }) {
 }
 
 function WideProjectCard({ project }: { project: (typeof projects)[3] }) {
-  const t = useTranslations('projects')
+  const t = useTranslations()
 
   return (
     <div className="glass-card rounded-3xl p-8 h-full flex flex-col md:flex-row gap-8 overflow-hidden relative hover:bg-surface/60 hover:border-primary/30 transition-all duration-300">
@@ -114,14 +120,14 @@ function WideProjectCard({ project }: { project: (typeof projects)[3] }) {
           ))}
         </div>
         <h3 className="text-3xl font-bold font-display group-hover:text-neon-blue transition-colors">
-          {project.title}
+          {t(project.titleKey as any)}
         </h3>
         <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-          {project.description}
+          {t(project.descriptionKey as any)}
         </p>
         <div className="pt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           <button className="border border-white/20 hover:border-white/40 bg-white/5 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all">
-            {t('cta.viewDetails')}
+            {t('projects.cta.viewDetails' as any)}
           </button>
         </div>
       </div>
