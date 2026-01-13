@@ -30,9 +30,12 @@ resource "github_branch_protection" "protected_branches" {
 
   # Lock branch (prevent any pushes)
   lock_branch = false
+
+  depends_on = [data.github_repository.repo]
 }
 
 # Data source to get repository information
+# Using full_name to ensure we get all attributes including node_id
 data "github_repository" "repo" {
   full_name = "${var.github_owner}/${var.repository_name}"
 }

@@ -1,11 +1,11 @@
 output "repository_id" {
   description = "The Node ID of the repository"
-  value       = data.github_repository.repo.node_id
+  value       = try(data.github_repository.repo.node_id, "N/A")
 }
 
 output "repository_full_name" {
   description = "The full name of the repository"
-  value       = data.github_repository.repo.full_name
+  value       = "${var.github_owner}/${var.repository_name}"
 }
 
 output "protected_branches" {
