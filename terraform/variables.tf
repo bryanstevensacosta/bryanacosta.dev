@@ -18,7 +18,7 @@ variable "repository_name" {
 variable "protected_branches" {
   description = "List of branches to protect"
   type        = list(string)
-  default     = ["main", "develop"]
+  default     = ["master", "develop"]
 }
 
 variable "require_code_owner_reviews" {

@@ -96,7 +96,7 @@ make plan
 make apply
 ```
 
-**Protected Branches:** `main`, `develop`
+**Protected Branches:** `master`, `develop`
 
 **Required Checks:**
 

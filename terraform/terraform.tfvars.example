@@ -3,7 +3,7 @@ github_owner      = "your-github-username"
 repository_name   = "bryanacosta.dev"
 
 # Protected Branches
-protected_branches = ["main", "develop"]
+protected_branches = ["master", "develop"]
 
 # Pull Request Reviews
 require_code_owner_reviews      = false
