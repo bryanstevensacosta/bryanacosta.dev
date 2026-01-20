@@ -143,8 +143,9 @@ describe('Contact Widget Unit Tests', () => {
       const { container } = renderWithIntl(<Contact />)
 
       const section = container.querySelector('section')
-      expect(section).toHaveClass('py-20')
-      expect(section).toHaveClass('md:py-32')
+      expect(section).toHaveClass('py-16')
+      expect(section).toHaveClass('px-4')
+      expect(section).toHaveClass('sm:px-6')
     })
   })
 
