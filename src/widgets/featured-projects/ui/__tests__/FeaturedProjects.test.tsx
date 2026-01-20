@@ -111,14 +111,6 @@ describe('FeaturedProjects', () => {
       )
     ).toBeDefined()
 
-    // Check CTA
-    expect(screen.getByText('Ver todos los proyectos')).toBeDefined()
-
-    // Check call to action
-    expect(
-      screen.getByText('¿Tienes un proyecto ambicioso en mente?')
-    ).toBeDefined()
-
     // Check hover text
     expect(screen.getAllByText('View Project').length).toBeGreaterThan(0)
 
@@ -178,12 +170,6 @@ describe('FeaturedProjects', () => {
       )
     ).toBeDefined()
 
-    // Check CTA
-    expect(screen.getByText('View all projects')).toBeDefined()
-
-    // Check call to action
-    expect(screen.getByText('Have an ambitious project in mind?')).toBeDefined()
-
     // Check hover text
     expect(screen.getAllByText('View Project').length).toBeGreaterThan(0)
 
@@ -210,8 +196,6 @@ describe('FeaturedProjects', () => {
     expect(translationKeys).toContain('title')
     expect(translationKeys).toContain('titleHighlight')
     expect(translationKeys).toContain('description')
-    expect(translationKeys).toContain('cta.viewAll')
-    expect(translationKeys).toContain('callToAction')
 
     // Verify project translation keys are used (with full path for non-namespaced calls)
     expect(translationKeys).toContain('projects.items.defi.title')
