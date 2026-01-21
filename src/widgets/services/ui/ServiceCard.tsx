@@ -92,17 +92,18 @@ export function ServiceCard({ service }: ServiceCardProps) {
   }, [service.id, totalSegments])
 
   const cardClasses = cn(
-    'card-hover-effect group relative flex flex-col rounded-xl bg-card/60 backdrop-blur-sm border h-full',
+    'card-hover-effect group relative flex flex-col rounded-xl h-full overflow-hidden',
+    // Glassmorphism base styles
+    'bg-white/5 backdrop-blur-md border border-white/10',
+    'shadow-[0_8px_32px_0_rgba(0,230,139,0.1)]',
+    // Hover effects
     'transform-gpu transition-all duration-300 ease-out',
-    'hover:-translate-y-1 hover:border-[#00E68B] hover:shadow-glow hover:bg-card/70',
+    'hover:-translate-y-1 hover:border-[#00E68B]/50 hover:bg-white/10',
+    'hover:shadow-[0_8px_32px_0_rgba(0,230,139,0.2)]',
     service.variant === 'ai' && 'ai-card',
     service.size === 'large' && 'justify-between p-8',
     service.size === 'medium' && 'justify-between p-6',
-    service.size === 'small' && 'justify-center p-6',
-    // Glassmorphism effect for custom-software card
-    service.id === 'custom-software' && 'overflow-hidden',
-    service.id === 'custom-software' &&
-      'hover:bg-card/50 hover:backdrop-blur-md'
+    service.size === 'small' && 'justify-center p-6'
   )
 
   return (
@@ -111,24 +112,25 @@ export function ServiceCard({ service }: ServiceCardProps) {
       role="article"
       aria-label={t(`${service.id}.title`)}
     >
-      {/* Glassmorphism overlay for custom-software card on hover */}
-      {service.id === 'custom-software' && (
-        <div className="absolute inset-0 z-[5] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#00E68B]/10 via-transparent to-[#00E68B]/5 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,230,139,0.1),transparent_50%)]" />
-          {/* Crystalline pattern overlay */}
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `
-                linear-gradient(30deg, transparent 48%, rgba(0,230,139,0.1) 49%, rgba(0,230,139,0.1) 51%, transparent 52%),
-                linear-gradient(150deg, transparent 48%, rgba(0,230,139,0.05) 49%, rgba(0,230,139,0.05) 51%, transparent 52%)
-              `,
-              backgroundSize: '20px 20px',
-            }}
-          />
-        </div>
-      )}
+      {/* Glassmorphism gradient overlay */}
+      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00E68B]/10 via-transparent to-[#00E68B]/5" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,230,139,0.15),transparent_70%)]" />
+      </div>
+
+      {/* Frosted glass texture */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(30deg, transparent 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%, transparent 52%),
+              linear-gradient(150deg, transparent 48%, rgba(255,255,255,0.02) 49%, rgba(255,255,255,0.02) 51%, transparent 52%)
+            `,
+            backgroundSize: '15px 15px',
+          }}
+        />
+      </div>
 
       {/* Background image for large cards */}
       {service.backgroundImage && (
